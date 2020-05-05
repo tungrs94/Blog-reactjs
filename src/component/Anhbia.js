@@ -6,6 +6,7 @@ function Anhbia(props) {
         {url: "https://techtalk.vn/wp-content/uploads/2016/06/techtalk-reactjs.png"},
         {url: "https://sogo.edu.vn/wp-content/uploads/2019/08/javascript-la-gi.jpg"},
     ];
+
     return (
         <SimpleImageSlider
             width='100%'

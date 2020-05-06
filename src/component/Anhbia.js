@@ -5,6 +5,7 @@ function Anhbia(props) {
     const images = [
         {url: "https://techtalk.vn/wp-content/uploads/2016/06/techtalk-reactjs.png"},
         {url: "https://sogo.edu.vn/wp-content/uploads/2019/08/javascript-la-gi.jpg"},
+        {url: "https://www.yourdictionary.com/images/definitions/lg/7296.view.jpg"},
     ];
 
     return (

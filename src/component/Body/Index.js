@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import {makeStyles} from '@material-ui/core/styles';
 import Content from "./Content";
-import RightConten from "./RightConten";
+import RightContent from "./RightContent";
 
 const useStyles = makeStyles({
     index: {
@@ -25,7 +25,7 @@ function Index(props) {
                 </Grid>
                 <Grid item xs={4}>
                     <div style={{backgroundColor: '#263238', padding: '20px'}}>
-                        <RightConten/>
+                        <RightContent/>
                     </div>
                 </Grid>
             </Grid>

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function RightConten(props) {
+function RightContent(props) {
     const classes = useStyles()
     return (
         <div style={{padding: '0px 20px'}}>
@@ -71,4 +71,4 @@ function RightConten(props) {
     );
 }
 
-export default RightConten;
+export default RightContent;

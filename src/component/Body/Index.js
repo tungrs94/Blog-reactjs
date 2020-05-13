@@ -13,19 +13,22 @@ const useStyles = makeStyles({
     }
 });
 
-function Index(props) {
+function Index({dataLang}) {
     const classes = useStyles()
+
     return (
         <div className={classes.index}>
             <Grid container>
                 <Grid item xs={8}>
                     <div style={{backgroundColor: '#636363', padding: '20px'}}>
-                        <Content/>
+                        <Content dataLang={dataLang}/>
                     </div>
                 </Grid>
                 <Grid item xs={4}>
                     <div style={{backgroundColor: '#263238', padding: '20px'}}>
-                        <RightContent/>
+                        <RightContent
+                            info={dataLang?.info}
+                        />
                     </div>
                 </Grid>
             </Grid>

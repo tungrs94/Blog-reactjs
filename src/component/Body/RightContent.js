@@ -7,6 +7,7 @@ import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import HomeIcon from '@material-ui/icons/Home';
 import LanguageIcon from '@material-ui/icons/Language';
 import Typography from '@material-ui/core/Typography';
+import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
     img: {
@@ -31,8 +32,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function RightContent(props) {
+function RightContent({info}) {
+    console.log(moment().format());
     const classes = useStyles()
+
     return (
         <div style={{padding: '0px 20px'}}>
             <div className={classes.divHeader}>
@@ -41,30 +44,31 @@ function RightContent(props) {
                      alt=""/>
             </div>
             <div>
-                <h3 className={classes.h3}>NGUYEN BA TUNG</h3>
+                <h3 className={classes.h3}> {info?.name} </h3>
                 <div className={classes.divIcon}>
                     <CakeIcon/>
-                    <Typography className={classes.typography}>Dec 21, 1994</Typography>
+                    <Typography
+                        className={classes.typography}> {moment(info?.birthday).format('YYYY/MM/DD')} </Typography>
                 </div>
                 <div className={classes.divIcon}>
                     <PersonIcon/>
-                    <Typography className={classes.typography}>Male</Typography>
+                    <Typography className={classes.typography}>{info?.sex}</Typography>
                 </div>
                 <div className={classes.divIcon}>
                     <PhoneIcon/>
-                    <Typography className={classes.typography}>0962817778</Typography>
+                    <Typography className={classes.typography}>{info?.phone}</Typography>
                 </div>
                 <div className={classes.divIcon}>
                     <MailOutlineIcon/>
-                    <Typography className={classes.typography}>tungrs94@gmail.com</Typography>
+                    <Typography className={classes.typography}>{info?.email}</Typography>
                 </div>
                 <div className={classes.divIcon}>
                     <HomeIcon/>
-                    <Typography className={classes.typography}>Hanoi, Vietnam</Typography>
+                    <Typography className={classes.typography}>{info?.address}</Typography>
                 </div>
                 <div className={classes.divIcon}>
                     <LanguageIcon/>
-                    <Typography className={classes.typography}>https://github.com/tungrs94</Typography>
+                    <Typography className={classes.typography}>{info?.website}</Typography>
                 </div>
             </div>
         </div>

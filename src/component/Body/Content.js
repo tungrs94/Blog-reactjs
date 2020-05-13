@@ -3,6 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import CastForEducationIcon from '@material-ui/icons/CastForEducation';
 import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import DesktopMacIcon from '@material-ui/icons/DesktopMac';
+import moment from 'moment'
 
 const useStyles = makeStyles({
     item: {
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
     }
 });
 
-function Content(props) {
+function Content({dataLang}) {
     const classes = useStyles()
     return (
         <div>
@@ -30,52 +31,82 @@ function Content(props) {
                     <CastForEducationIcon/>
                     <h3 className={classes.title}>EDUCATION</h3>
                 </div>
-                <div className={classes.divIcon}>
-                    <div>
-                        <h4>BACHKHOA-APTECH INTERNATIONAL IT EDUCATION SYSTEM</h4>
-                    </div>
-                    <h4 className={classes.time}>OCT 2018 - APR 2019</h4>
-                </div>
-                <p>Course: Python Programming</p>
-                <p>PYTHON/MYSQL: 14/20 | HTML/CSS: 17/20</p>
-                <h4>UNIVERSITY OF TRANSPORT AND COMMUNICATIONS</h4>
-                <h4>SEP 2012 - FEB 2017</h4>
-                <p>Major: Electronics and Communication Engineering</p>
-                <p>GPA: 6.3/10</p>
+                {
+                    dataLang?.education.map((data, index) => {
+                        return (
+                            <div key={index}>
+                                <div className={classes.divIcon}>
+                                    <div>
+                                        <h4>{data?.name}</h4>
+                                    </div>
+                                    <h4 className={classes.time}>
+                                        {moment(data?.start).format('YYYY/MM/DD')} ~ {moment(data?.end).format('YYYY/MM/DD')}
+                                    </h4>
+                                </div>
+                                <p>Course: {data?.course}</p>
+                                {
+                                    data?.skills.length !== 0 &&
+                                    <p>Skills: {
+                                        data?.skills.map(skill => {
+                                            return (
+                                                <div style={{marginLeft: 10}}> - {skill.name} : {skill.point}</div>
+                                            )
+                                        })
+                                    } </p>
+                                }
+                                {
+                                    data?.GPA &&
+                                    <p>GPA: {data?.GPA}</p>
+                                }
+                            </div>
+                        )
+                    })
+                }
             </div>
             <div className={classes.item}>
                 <div className={classes.divIcon}>
                     <DesktopMacIcon/>
                     <h3 className={classes.title}>TECHNICAL SKILLS</h3>
                 </div>
-                <p>Language: Python, HTML.</p>
-                <p>Web framework: Django</p>
-                <p>SCM: Git, GitLab, GitHub</p>
-                <p>OS: Ubuntu</p>
-                <p>Team communication: Slack</p>
-                <p>Editor: VSCode, SublimeText</p>
-                <p>Python tool: virtualenv, pip, pep8, flake8, IPython, jupyter notebook</p>
-                <p>Library: requests, beautifulsoup, jinja2, argparse, logging, pdb, JSON, XML, numpy, pandas,
-                    matplotlib…</p>
-                <p>Database: SQLite, PostgreSQL, MySQL</p>
+                <p>Language: {dataLang?.skills?.language}</p>
+                <p>Database: {dataLang?.skills?.database}</p>
+                <p>SCM: {dataLang?.skills?.scm}</p>
+                <p>OS: {dataLang?.skills?.os}</p>
+                <p>Editor: {dataLang?.skills?.editor}</p>
+                <p>Python Tools: {dataLang?.skills?.pythonTools}</p>
+                <p>Library: {dataLang?.skills?.library}</p>
+                <p>Others: {dataLang?.skills?.others}</p>
             </div>
             <div className={classes.item}>
                 <div className={classes.divIcon}>
                     <WorkOutlineIcon/>
                     <h3 className={classes.title}>WORK EXPERIENCE</h3>
                 </div>
-                <div className={classes.divIcon}>
-                    <div>
-                        <h4>DEVELOPMENT JOINT STOCK COMPANY VIET HUNG</h4>
-                    </div>
-                    <h4 className={classes.time}>MAR 2017 - MAY 2019</h4>
-                </div>
-                <p>Technical staff</p>
-                <p>Main responsibilities:</p>
-                <p>- Mobile network development</p>
-                <p>- Check basic service quality</p>
-                <p>- Design BTS indoor with autocad</p>
-                <p>- Project participation: 3G/4G Huawei, 4G Nokia.</p>
+                {
+                    dataLang?.experience.map(exp => {
+                        return (
+                            <div>
+                                <div className={classes.divIcon}>
+                                    <div>
+                                        <h4> {exp?.name}</h4>
+                                    </div>
+                                    <h4 className={classes.time}>
+                                        {moment(exp?.start).format('YYYY/MM/DD')} ~ {moment(exp?.end || moment().format()).format('YYYY/MM/DD')}
+                                    </h4>
+                                </div>
+                                <p>Regency: {exp?.regency}</p>
+                                <p>Main responsibilities: {
+                                    exp?.responsibilities.map(repos => {
+                                        return (
+                                            <div style={{marginLeft: 10}}>- {repos}</div>
+                                        )
+                                    })
+                                }
+                                </p>
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     );

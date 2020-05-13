@@ -21,8 +21,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Header() {
+export default function Header({lang, setLang}) {
     const classes = useStyles();
+
+    function handleSetLang(name) {
+        console.log(name)
+        setLang(name)
+    }
 
     return (
         <div className={classes.root}>
@@ -43,6 +48,20 @@ export default function Header() {
                     <Typography variant="h6" className={classes.title}>
                         News
                     </Typography>*/}
+                    <div style={{display: 'flex'}}>
+                        <div
+                            style={{width: 30, height: 20, marginRight: 5}}
+                            onClick={() => handleSetLang('eng')}
+                        >
+                            eng
+                        </div>
+                        <div
+                            style={{width: 30, height: 20}}
+                            onClick={() => handleSetLang('vi')}
+                        >
+                            vi
+                        </div>
+                    </div>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>

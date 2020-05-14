@@ -8,7 +8,6 @@ import {db} from './firebaseConfig'
 function App() {
     const [lang, setLang] = useState('eng')
     const [dataLang, setDataLang] = useState(null)
-    const [tab, setTab] = useState(0)
 
     console.log('lang', lang);
     console.log('dataLang', dataLang);
